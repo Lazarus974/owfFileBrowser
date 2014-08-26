@@ -12,67 +12,12 @@
 		
 		<link href="%{link '/data/bootstrap/css/bootstrap.min.css'}%" rel="stylesheet" />
 		<link href="%{link '/data/bootstrap/css/bootstrap-theme.min.css'}%" rel="stylesheet" />
-		<style>
-			.navbar {
-				background: lavender;
-				border-bottom: 0;
-			}
-			ul.nav li.active a,ul.nav li.open a.dropdown-toggle {
-				background: gainsboro !important;
-			}
-			a:focus {
-				outline: 0;
-			}
-			
-			#body {
-				margin-top: 100px;
-			}
-			#body .files-loading { display: none; }
-			#body.loading .files-loading { display: block; }
-			#body .panel { display: block; }
-			#body.loading .panel { display: none; }
-			.body-content {
-				background: lightcyan;
-			}
-			
-			.bandwidth-warning {
-				position: fixed;
-				bottom: 0;
-				
-				color: red;
-				font-weight: bold;
-				
-				height: 40px;
-				padding-top: 10px;
-				width: 50%;
-				margin-left: 25%;
-				margin-bottom: 0;
-				
-				text-align: center;
-				background: rgba(200, 100, 100, 0.5);
-			}
-			
-			.bandwidth-update {
-				position: fixed;
-				bottom: 0;
-				
-				font-weight: bold;
-				
-				height: 40px;
-				padding-top: 10px;
-				width: 15%;
-				margin-left: 85%;
-				margin-bottom: 0;
-				
-				text-align: center;
-				background: rgba(100, 200, 100, 0.5);
-			}
-		</style>
+		<link href="%{link '/data/owfFileBrowser/css/owfFileBrowser.css'}%" rel="stylesheet" />
 		
 		<script type="text/javascript" src="%{link '/data/js/jquery-1.11.0.min.js'}%"></script>
 		<script type="text/javascript" src="%{link '/data/bootstrap/js/bootstrap.min.js'}%"></script>
 		<script type="text/javascript" src="%{link '/data/bootstrap/js/bootstrap-growl.min.js'}%"></script>
-		<script type="text/javascript" src="%{link '/data/files/js/files.js'}%"></script>
+		<script type="text/javascript" src="%{link '/data/owfFileBrowser/js/owfFileBrowser.js'}%"></script>
 		<script type="text/javascript">
 			root = "%{link '/'}%";
 			//dateFormat = "%{*$dateFormat}%";
@@ -98,7 +43,11 @@
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
 						%{foreach($directories as $directory)}%
-							<li class="%{$directory['name']}%"><a href="%{link '/files/'}%%{$directory['id']}%" class="files-menu">%{$directory['name']}%</a></li>
+							<li class="%{if $directory['active']}% active%{/if}%">
+								<a href="%{link '/files/'}%%{$directory['id']}%" class="files-menu">
+									%{$directory['name']}%
+								</a>
+							</li>
 						%{/foreach}%
 					</ul>
 					
@@ -126,9 +75,10 @@
 				<p class="text-muted">
 					%{@ "Scanning directory, please wait."}%
 				</p>
-				<img src="%{link '/data/files/images/loader.gif'}%" alt="%{@ 'Loading ...'}%" />
+				<img src="%{link '/data/owfFileBrowser/images/loader.gif'}%" alt="%{@ 'Loading ...'}%" />
 			</center>
-			<div class="panel panel-default">
+			
+			<div class="panel panel-info">
 				<div class="panel-heading">
 					%{@ "File browser"}%
 				</div>
@@ -138,7 +88,8 @@
 		</div>
 		<script>$(document).ready(function() {LoadContent(%{$body}%);});</script>
 		
-		<p class="bandwidth-warning"%{if $bandwidth}% style="display: none;"%{/if}%>
+<!--
+		<p class="bandwidth-warning"%{*if $bandwidth}% style="display: none;"%{*/if}%>
 			%{@ "Your bandwidth has not been checked yet"}%
 			⋅
 			<span style="color: yellow;cursor: pointer;" class="glyphicon glyphicon-question-sign"
@@ -151,11 +102,12 @@
 			</button>
 		</p>
 		
-		<p class="bandwidth-update"%{if !$bandwidth}% style="display: none;"%{/if}%>
+		<p class="bandwidth-update"%{*if !$bandwidth}% style="display: none;"%{*/if}%>
 			<button class="btn btn-xs btn-default files-bandwidth-check" data-url="%{link '/bandwidth/checker'}%" data-alt="<span class='glyphicon glyphicon-sort-by-attributes'></span>&nbsp;%{@ 'Updating ...'}%"
 				data-toggle="tooltip" data-placement="top" title="%{@ 'This lasts ~10s and entirelly freeze your connection'}%">
 				<span class="glyphicon glyphicon-play"></span>&nbsp;%{@ "Update bandwidth"}%
 			</button>
 		</p>
+-->
 	</body>
 </html>

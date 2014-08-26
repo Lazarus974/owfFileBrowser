@@ -1,0 +1,75 @@
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 		Main elements
+ */
+
+a:focus {
+	outline: 0;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 		Bootstrap overloading
+ */
+
+.navbar {
+	background: #BABABA;
+	background: -webkit-linear-gradient(#BABABA, #FAFAFA);
+	background: -o-linear-gradient(#BABABA, #FAFAFA);
+	background: -moz-linear-gradient(#BABABA, #FAFAFA);
+	background: linear-gradient(#BABABA, #FAFAFA);
+	border-bottom: 1px solid #E0E0E0;
+}
+
+ul.nav li.active a,ul.nav li.open a.dropdown-toggle {
+	background: gainsboro !important;
+}
+ol.breadcrumb {
+	border: solid 1px #E0E0E0;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * 		Custom
+ */
+
+#body {
+	margin-top: 60px;
+}
+
+#body .files-loading { display: none; }
+#body.loading .files-loading { display: block; }
+#body .panel { display: block; }
+#body.loading .panel { display: none; }
+
+/*
+.bandwidth-warning {
+	position: fixed;
+	bottom: 0;
+	
+	color: red;
+	font-weight: bold;
+	
+	height: 40px;
+	padding-top: 10px;
+	width: 50%;
+	margin-left: 25%;
+	margin-bottom: 0;
+	
+	text-align: center;
+	background: rgba(200, 100, 100, 0.5);
+}
+
+.bandwidth-update {
+	position: fixed;
+	bottom: 0;
+	
+	font-weight: bold;
+	
+	height: 40px;
+	padding-top: 10px;
+	width: 15%;
+	margin-left: 85%;
+	margin-bottom: 0;
+	
+	text-align: center;
+	background: rgba(100, 200, 100, 0.5);
+}
+*/

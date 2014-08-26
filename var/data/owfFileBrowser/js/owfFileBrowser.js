@@ -1,44 +1,44 @@
 
-function BandwidthCheck(event) {
-	event.preventDefault();
-	var el = $(this),
-		url = el.data('url');
-	el.toggleClass('disabled');
-	el.Alt();
+//function BandwidthCheck(event) {
+	//event.preventDefault();
+	//var el = $(this),
+		//url = el.data('url');
+	//el.toggleClass('disabled');
+	//el.Alt();
 	
-	$.post(url, {}, function(data) {
-		$.post(url, {action: "get"}, function(data) {
-			el.toggleClass('disabled');
-			el.Alt();
-			if(data.status) {
-				$.growl('Bandwidth properly updated : '+data.message, {type: "success"});
-				$(".bandwidth-warning").hide();
-				$(".bandwidth-update").show();
-			}
-			else {
-				$.growl('Error', {type: "danger"});
-				$(".bandwidth-update").hide();
-				$(".bandwidth-warning").show();
-			}
-		}, "json");
-	});
-}
+	//$.post(url, {}, function(data) {
+		//$.post(url, {action: "get"}, function(data) {
+			//el.toggleClass('disabled');
+			//el.Alt();
+			//if(data.status) {
+				//$.growl('Bandwidth properly updated : '+data.message, {type: "success"});
+				//$(".bandwidth-warning").hide();
+				//$(".bandwidth-update").show();
+			//}
+			//else {
+				//$.growl('Error', {type: "danger"});
+				//$(".bandwidth-update").hide();
+				//$(".bandwidth-warning").show();
+			//}
+		//}, "json");
+	//});
+//}
 
-function LatencyCheck(url) {
-	start = new Date();
-	$.post(url, {start: start.getTime()}, function(data) {
-		end = new Date();
-		var lag = end - start;
-		$.post(url, {lag: lag}, function(data) {
-			if(data.status) {
-				$.growl(data.message, {type: "success"});
-				$(".latency-warning").remove();
-			}
-			else
-				$.growl(data.message, {type: "danger"});
-		}, "json");
-	}, "json");
-}
+//function LatencyCheck(url) {
+	//start = new Date();
+	//$.post(url, {start: start.getTime()}, function(data) {
+		//end = new Date();
+		//var lag = end - start;
+		//$.post(url, {lag: lag}, function(data) {
+			//if(data.status) {
+				//$.growl(data.message, {type: "success"});
+				//$(".latency-warning").remove();
+			//}
+			//else
+				//$.growl(data.message, {type: "danger"});
+		//}, "json");
+	//}, "json");
+//}
 
 var query = false;
 
@@ -135,7 +135,7 @@ function Buttons() {
 	$(".files-info:not(.files-init)").addClass('files-init').click(OnFileInfo);
 	$(".files-directory:not(.files-init)").addClass('files-init').click(OnDirectoryChange);
 	$(".files-download:not(.files-init)").addClass('files-init').click(OnDownload);
-	$(".files-bandwidth-check:not(.files-init)").addClass('files-init').click(BandwidthCheck);
+	//$(".files-bandwidth-check:not(.files-init)").addClass('files-init').click(BandwidthCheck);
 }
 	
 $(document).ready(function() {
@@ -163,26 +163,26 @@ $(document).ready(function() {
 			});
 	});
 	
-	$(document).on('scroll', function(event) {
+	//$(document).on('scroll', function(event) {
 		
-		var	elementStatic = $(".files-display:not('.files-display-fixed')"),
-			elementFixed = $(".files-display.files-display-fixed"),
-			fixed = $(window).scrollTop() > 125,
-			isFixed = elementFixed.is(':visible');
-			//changed = false;
+		//var	elementStatic = $(".files-display:not('.files-display-fixed')"),
+			//elementFixed = $(".files-display.files-display-fixed"),
+			//fixed = $(window).scrollTop() > 125,
+			//isFixed = elementFixed.is(':visible');
+			////changed = false;
 		
-		if(fixed && !isFixed) {
-			var w = elementStatic.width();
-			elementStatic.hide();
-			elementFixed.show();
-			elementFixed.css('width', w);
+		//if(fixed && !isFixed) {
+			//var w = elementStatic.width();
+			//elementStatic.hide();
+			//elementFixed.show();
+			//elementFixed.css('width', w);
+			////changed = true;
+		//}
+		//else if (!fixed && isFixed) {
+			//elementFixed.hide();
+			//elementStatic.show();
 			//changed = true;
-		}
-		else if (!fixed && isFixed) {
-			elementFixed.hide();
-			elementStatic.show();
-			//changed = true;
-		}
+		//}
 		
 		//if(changed) {
 			//el.toggleClass('col-xs-offset-3');
@@ -190,20 +190,20 @@ $(document).ready(function() {
 			//el.toggleClass('col-xs-7');
 			//el.toggleClass('files-relative-fixed');
 		//}
-	});
+	//});
 	
-	$(window).resize(function(event) {
-		var	elementStatic = $(".files-display:not('.files-display-fixed')"),
-			elementFixed = $(".files-display.files-display-fixed");
+	//$(window).resize(function(event) {
+		//var	elementStatic = $(".files-display:not('.files-display-fixed')"),
+			//elementFixed = $(".files-display.files-display-fixed");
 		
-		if(elementFixed.is(':visible')) {
-			elementFixed.hide();
-			elementStatic.show();
-			var w = elementStatic.width();
-			elementStatic.hide();
-			elementFixed.show();
-			elementFixed.css('width', w);
-		}
-	});
+		//if(elementFixed.is(':visible')) {
+			//elementFixed.hide();
+			//elementStatic.show();
+			//var w = elementStatic.width();
+			//elementStatic.hide();
+			//elementFixed.show();
+			//elementFixed.css('width', w);
+		//}
+	//});
 	
 });

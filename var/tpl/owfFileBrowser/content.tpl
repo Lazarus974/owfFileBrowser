@@ -7,7 +7,7 @@
 </ol>
 
 <div class="col-xs-3">
-	<ul class="nav nav-pills nav-stacked" data-page="%{$directory['id']}%" data-url="%{link '/json/owfFileBrowser_scanner/json_info'}%">
+	<ul class="list-group" data-page="%{$directory['id']}%" data-url="%{link '/json/owfFileBrowser_scanner/json_info'}%">
 		%{$body}%
 	</ul>
 </div>

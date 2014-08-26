@@ -155,7 +155,7 @@ class owfFileBrowser_scanner extends wf_agg {
 	public function get_file_content($filename, $mime, $size) {
 		list($type, $extension) = explode('/', $mime);
 		if($type == "text")
-			return array(array('name' => "Contenu", 'value' => file_get_contents($filename, false, NULL, 0, 1024).($size > 1024 ? ' [...]' : '')));
+			return array(array("html" => true, "name" => "Contenu", 'value' => nl2br(htmlentities(file_get_contents($filename, false, NULL, 0, 1024).($size > 1024 ? ' [...]' : '')))));
 		elseif($type == "audio" || $type == "video")
 			return (new files_info_mp3($this->wf))->get_info($filename);
 		elseif($type == "image")

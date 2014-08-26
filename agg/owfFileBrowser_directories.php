@@ -50,4 +50,30 @@ class owfFileBrowser_directories extends wf_agg {
 			"owfFileBrowser Directories"
 		);
 	}
+	
+	private $dirs = null;
+	public function get_directories($safe = true) {
+		if(!isset($this->dirs)) {
+			$ret = $this->dao->get(array());
+			$current = $this->get_current_directory(false);
+			if(!$current)
+				$current = current($ret);
+			foreach($ret as $dir) {
+				$dir["active"] = false;
+				if($current["id"] == $dir["id"])
+					$dir["active"] = true;
+				$this->dirs[$dir["id"]] = $dir;
+			}
+		}
+		return $this->dirs;
+	}
+	
+	public function get_current_directory($safe = true) {
+		$id = intval($this->wf->get_var("directory"));
+		$ret = current($this->dao->get(array("id" => $id)));
+		if(!$ret && $safe)
+			$ret = current($this->get_directories());
+		return $ret;
+	}
+	
 }

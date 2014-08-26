@@ -13,21 +13,19 @@ class owfFileBrowser_renderer extends wf_agg {
 	
 	public function rendering($body) {
 		
-		// deprecated
-		$bandwidth = $this->wf->latency_checker()->get_bandwidth();
+		//$bandwidth = $this->wf->latency_checker()->get_bandwidth();
 		
 		$tpl = new core_tpl($this->wf);
 		
 		$in = array(
-			"lang"			=> 'en', //change
+			"lang"			=> "en",
 			"title"			=> $this->title,
-			"directories"	=> $this->directories->dao->get(),
-			//"page"			=> $this->page,
+			"directories"	=> $this->directories->get_directories(),
 			"body"			=> json_encode($body),
-			'here'			=> $this->cipher->encode($this->wf->linker('/admin/files', true)),
-			'me'			=> $this->session->session_me,
-			'perms'			=> $this->session->session_my_perms,
-			"bandwidth"		=> $bandwidth,
+			"here"			=> $this->cipher->encode($this->wf->linker('/admin/files', true)),
+			"me"			=> $this->session->session_me,
+			"perms"			=> $this->session->session_my_perms,
+			//"bandwidth"		=> $bandwidth,
 			//'dateFormat'	=> strtolower($this->bank_utils->getFullDateFormat())
 		);
 		
@@ -35,7 +33,5 @@ class owfFileBrowser_renderer extends wf_agg {
 		
 		echo $tpl->fetch('owfFileBrowser/main');
 	}
-	
-	public function set_title($title) { $this->title = $title; }
 	
 }

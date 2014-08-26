@@ -26,7 +26,7 @@
 			%{foreach($content as $k => $c)}%
 				<div class="form-group">
 					<label for="%{$k}%" class="col-sm-2 control-label">%{$c['name']}%</label>
-					<div class="col-sm-10">
+					<div class="col-sm-10 text-left">
 						%{if isset($c['html']) && $c['html']}%
 							%{$c['value']}%
 						%{else}%
