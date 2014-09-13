@@ -74,9 +74,10 @@ class wfm_owfFileBrowser extends wf_module {
 	public function belboudou_mainpage() {
 		return array(
 			"/files" => array(
-				"title" => $this->ts("Browsing public files"),
+				"title" => $this->ts("Files"),
 				"img" => $this->wf->linker("/picture/ftp.png"),
 				"alt" => $this->ts("Files"),
+				"icon" => "briefcase"
 			)
 		);
 	}
